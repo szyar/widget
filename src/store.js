@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import Accordion from './components/Accordion';
 import Dropdown from './components/Dropdown';
-import Route from './components/Route';
-import Header from './components/Header';
 
 const items = [
   {
@@ -35,22 +33,23 @@ const options = [
 ];
 
 const App = () => {
-  const [selected, setSelected] = useState(options[0]);
+  const [selected, setSelected] = useState({});
+  const [showDropdown, setShowDropdown] = useState(true);
 
   return (
-    <div className="ui container">
-      <Header />
-      <Route path="/">
-        <Accordion items={items} />
-      </Route>
-      <Route path="/dropdown">
+    <div>
+      <Accordion items={items} />
+      <button onClick={() => setShowDropdown(!showDropdown)}>Toggle Dropdown</button>
+      {
+        showDropdown ?
         <Dropdown
           selected={selected}
           onSelectedChange={setSelected}
           labelMessage='Select a Color'
           options={options}
-        />
-      </Route>
+        /> :
+        null
+      }
     </div>
   );
 };
