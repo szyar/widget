@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Comment from './components/comment/Comment';
+import Season from './components/season/Season';
 import Accordion from './components/Accordion';
 import Dropdown from './components/Dropdown';
 import Route from './components/Route';
@@ -50,6 +52,12 @@ const App = () => {
           labelMessage='Select a Color'
           options={options}
         />
+      </Route>
+      <Route path="/comment">
+        <Comment />
+      </Route>
+      <Route path="/season">
+        <Season />
       </Route>
     </div>
   );
